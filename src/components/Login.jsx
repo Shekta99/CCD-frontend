@@ -18,16 +18,12 @@ import { EmailIcon, LockIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import fondo from "../img/fondo.jpg";
 
 function Login() {
-  const users = [
-    { user: "admin", pass: "123" },
-    { user: "test", pass: "456" },
-  ];
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
   const colorShowIcon = useColorModeValue("gray.500", "white");
   const colorInteractiveElements = "blue.600";
   const colorHover = "blue.300";
-  const { toggleColorMode } = useColorMode();
+  const { colorMode, toggleColorMode } = useColorMode();
   const colorBackground = useColorModeValue("gray.300", "gray.700");
   const colorBackgroundInputs = useColorModeValue("white", "gray.500");
   const colorText = useColorModeValue("black", "white");
@@ -105,7 +101,7 @@ function Login() {
                 color="white"
                 _hover={{ bg: colorHover, color: "black" }}
               >
-                Dark-mode
+                Toggle {colorMode === "light" ? "Dark" : "Light"}
               </Button>
             </HStack>
           </VStack>
