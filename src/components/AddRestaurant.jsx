@@ -1,4 +1,10 @@
 import {
+  ChatIcon,
+  AddIcon,
+  LinkIcon,
+  ChevronRightIcon,
+} from "@chakra-ui/icons";
+import {
   Box,
   Text,
   Button,
@@ -9,21 +15,15 @@ import {
   InputLeftElement,
   HStack,
   InputGroup,
-  useColorMode,
   useColorModeValue,
+  useColorMode,
 } from "@chakra-ui/react";
-import {
-  ChatIcon,
-  AddIcon,
-  LinkIcon,
-  ChevronRightIcon,
-} from "@chakra-ui/icons";
 import fondo from "../img/fondo.jpg";
 
 function AddRestaurant() {
   const colorInteractiveElements = "blue.600";
   const colorHover = "blue.300";
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { toggleColorMode } = useColorMode();
   const colorBackground = useColorModeValue("gray.300", "gray.700");
   const colorBackgroundInputs = useColorModeValue("white", "gray.500");
   const colorText = useColorModeValue("black", "white");
@@ -111,7 +111,7 @@ function AddRestaurant() {
                 color="white"
                 _hover={{ bg: colorHover, color: "black" }}
               >
-                Toggle {colorMode === "light" ? "Dark" : "Light"}
+                Dark-mode
               </Button>
             </HStack>
           </VStack>
