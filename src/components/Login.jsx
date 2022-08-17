@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { EmailIcon, LockIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
 import fondo from "../img/fondo.jpg";
 
 function Login() {
@@ -27,6 +28,7 @@ function Login() {
   const colorBackground = useColorModeValue("gray.300", "gray.700");
   const colorBackgroundInputs = useColorModeValue("white", "gray.500");
   const colorText = useColorModeValue("black", "white");
+  const history = useNavigate();
 
   return (
     <div
@@ -90,6 +92,7 @@ function Login() {
             <HStack spacing={14}>
               <Button
                 bg={colorInteractiveElements}
+                onClick={()=>{history("/restaurants");}}
                 color="white"
                 _hover={{ bg: colorHover, color: "black" }}
               >

@@ -20,9 +20,9 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import fondo from "../img/fondo.jpg";
+import fondo from "../../img/fondo.jpg";
 
-function AddRestaurant() {
+function AddIngredient() {
   const toast = useToast();
   const colorInteractiveElements = "blue.600";
   const colorHover = "blue.300";
@@ -31,17 +31,17 @@ function AddRestaurant() {
   const colorBackgroundInputs = useColorModeValue("white", "gray.500");
   const colorText = useColorModeValue("black", "white");
   const [name, setName] = useState("");
-  const [speciality, setSpec] = useState("");
+  const [kind, setKind] = useState("");
   const [imageURL, setImg] = useState("");
 
   const handleSubmit = async () => {
     const reqOps = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, speciality, imageURL }),
+      body: JSON.stringify({ name, kind, imageURL }),
     };
     await fetch(
-      "https://lighthearted-beignet-0eb9c3.netlify.app/api/restaurants",
+      "https://lighthearted-beignet-0eb9c3.netlify.app/api/ingredients",
       reqOps
     )
       .then((response) => response.json())
@@ -49,12 +49,12 @@ function AddRestaurant() {
         console.log(data);
       });
     toast({
-      title: "Restaurant created.",
-      description: "We've created the Restaurant.",
+      title: "Ingredient created.",
+      description: "We've created the Ingredient.",
       status: "success",
       duration: 9000,
       isClosable: true,
-      onCloseComplete: () => window.location.replace("/restaurants-list"),
+      onCloseComplete: () => window.location.replace("/ingredients-list"),
     });
   };
 
@@ -77,7 +77,7 @@ function AddRestaurant() {
       >
         <Center>
           <VStack spacing={8}>
-            <Heading size="lg">AddRestaurant</Heading>
+            <Heading size="lg">Add Ingredient</Heading>
             <Box w="100%">
               <Text>Name:</Text>
               <InputGroup>
@@ -87,7 +87,7 @@ function AddRestaurant() {
                 <Input
                   color={colorText}
                   bg={colorBackgroundInputs}
-                  placeholder="Mexican Tour"
+                  placeholder="salt"
                   borderColor="black"
                   onChange={(e) => setName(e.target.value)}
                   _hover={{ borderColor: colorHover }}
@@ -96,7 +96,7 @@ function AddRestaurant() {
             </Box>
 
             <Box w="100%">
-              <Text>Speciality:</Text>
+              <Text>Kind:</Text>
               <InputGroup>
                 <InputLeftElement
                   children={
@@ -106,9 +106,9 @@ function AddRestaurant() {
                 <Input
                   color={colorText}
                   bg={colorBackgroundInputs}
-                  placeholder="Mexican food"
+                  placeholder="Salad"
                   borderColor="black"
-                  onChange={(e) => setSpec(e.target.value)}
+                  onChange={(e) => setKind(e.target.value)}
                   _hover={{ borderColor: colorHover }}
                 />
               </InputGroup>
@@ -155,4 +155,4 @@ function AddRestaurant() {
   );
 }
 
-export default AddRestaurant;
+export default AddIngredient;
