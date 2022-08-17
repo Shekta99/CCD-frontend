@@ -56,9 +56,7 @@ function AddRestaurant() {
       status: "success",
       duration: 9000,
       isClosable: true,
-      onCloseComplete: () => () => {
-        history("/restaurants-list");
-      },
+      onCloseComplete: () => history("/restaurants-list"),
     });
   };
 
