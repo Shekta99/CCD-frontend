@@ -20,10 +20,12 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import fondo from "../../img/fondo.jpg";
 
 function AddIngredient() {
   const toast = useToast();
+  const history = useNavigate();
   const colorInteractiveElements = "blue.600";
   const colorHover = "blue.300";
   const { toggleColorMode } = useColorMode();
@@ -54,7 +56,7 @@ function AddIngredient() {
       status: "success",
       duration: 9000,
       isClosable: true,
-      onCloseComplete: () => window.location.replace("/ingredients-list"),
+      onCloseComplete: () => history("/ingredients-list"),
     });
   };
 

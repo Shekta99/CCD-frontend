@@ -20,10 +20,12 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import fondo from "../img/fondo.jpg";
 
 function AddRestaurant() {
   const toast = useToast();
+  const history = useNavigate();
   const colorInteractiveElements = "blue.600";
   const colorHover = "blue.300";
   const { toggleColorMode } = useColorMode();
@@ -54,7 +56,9 @@ function AddRestaurant() {
       status: "success",
       duration: 9000,
       isClosable: true,
-      onCloseComplete: () => window.location.replace("/restaurants-list"),
+      onCloseComplete: () => () => {
+        history("/restaurants-list");
+      },
     });
   };
 
